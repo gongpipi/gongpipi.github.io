@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Gongpipi&#39;s Blog</title>
+  <title>Tag: spring-session | Gongpipi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="初级程序员的一小步">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gongpipi&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/spring-session/index.html">
 <meta property="og:site_name" content="Gongpipi&#39;s Blog">
 <meta property="og:description" content="初级程序员的一小步">
 <meta name="twitter:card" content="summary">
@@ -146,56 +146,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-spring-boot-配置spring-session-redis-md" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" class="archive-article-date">
+  	<time datetime="2017-06-11T13:52:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/11/spring-boot-配置spring-session-redis-md/">spring-boot 配置spring-session-redis.md</a>
+      <a class="archive-article-title" href="/2017/06/11/spring-boot-配置spring-session-redis-md/">spring-boot 配置spring-session-redis.md</a>
     </h1>
   
 
-        
-        <a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" class="archive-article-date">
-  	<time datetime="2017-06-11T13:52:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。  </p>
-<p>另外还有一点，<strong>web端的sessionid 好像也是共享的</strong></p>
-<h3 id="1-使用spring-session"><a href="#1-使用spring-session" class="headerlink" title="1. 使用spring session"></a>1. 使用spring session</h3><p>spring boot 使用 spring session 很简单，总共需要3步即可完成配置</p>
-<ol>
-<li>在pom文件之配置依赖，版本继承spring-parent即可</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.springframework.session&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;spring-session-data-redis&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>在application.properties中添加相应的配置，在每个web app中都要配置</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># session 存储类型</div><div class="line">spring.session.store-type= redis</div><div class="line"></div><div class="line">spring.redis.database=1</div><div class="line">spring.redis.port=6379</div><div class="line">spring.redis.host=192.168.52.131</div><div class="line"># spring.redis.password=secret # 这里我的redis没有密码，所以我就没有配置</div></pre></td></tr></table></figure>
-<ol>
-<li>在spring-boot 启动类上加入注解<code>@EnableRedisHttpSession</code>，如：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@SpringBootApplication</div><div class="line">@EnableRedisHttpSession</div><div class="line">public class JspTomcatEmbeApplication extends SpringBootServletInitializer &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) &#123;</div><div class="line">        return application.sources(JspTomcatEmbeApplication.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        SpringApplication.run(JspTomcatEmbeApplication.class, args);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="2-在controller中加入方法，验证session-id是否一致"><a href="#2-在controller中加入方法，验证session-id是否一致" class="headerlink" title="2. 在controller中加入方法，验证session id是否一致"></a>2. 在controller中加入方法，验证session id是否一致</h3><p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@GetMapping(&quot;/session&quot;)</div><div class="line">@ResponseBody</div><div class="line">public String getSessionId(HttpSession session) &#123;</div><div class="line">    return session.getId();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>分别请求各个项目的地址<code>http://localhost:8080/session</code> 和 <code>http://localhost:8081/session</code><br>可以得到相同的 session id 如 <code>9141de53-5de1-4c3c-a948-cd8b223836b2</code></p>
-<h3 id="3-spring-session-还可以存储到数据库中。具体可以参考官网的例子和文档"><a href="#3-spring-session-还可以存储到数据库中。具体可以参考官网的例子和文档" class="headerlink" title="3. spring-session 还可以存储到数据库中。具体可以参考官网的例子和文档"></a>3. spring-session 还可以存储到数据库中。具体可以参考官网的例子和文档</h3><ol>
-<li>本例子项目地址 <a href="https://git.oschina.net/gongpipi/springbootdemo/tree/master/web-template" target="_blank" rel="external">https://git.oschina.net/gongpipi/springbootdemo/tree/master/web-template</a></li>
-<li>官网文档链接 <a href="http://docs.spring.io/spring-session/docs/2.0.0.BUILD-SNAPSHOT/reference/html5/#samples" target="_blank" rel="external">http://docs.spring.io/spring-session/docs/2.0.0.BUILD-SNAPSHOT/reference/html5/#samples</a></li>
-<li>例子github地址 <a href="https://github.com/spring-projects/spring-session/tree/master/samples" target="_blank" rel="external">https://github.com/spring-projects/spring-session/tree/master/samples</a></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,344 +189,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/11/spring-boot-配置spring-session-redis-md/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
   
-    <article id="post-docker-基本操作指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/30/docker-基本操作指令/">docker 基本操作指令</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/30/docker-基本操作指令/" class="archive-article-date">
-  	<time datetime="2017-05-30T09:00:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><ol>
-<li><code>yum install docker</code></li>
-<li>启动服务 <code>service docker start</code></li>
-</ol>
-<p>推荐两个国内的docker镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.http://hub.daocloud.io/</div><div class="line">2.https://c.163.com/hub#/m/home/</div></pre></td></tr></table></figure></p>
-<h1 id="docker-指令"><a href="#docker-指令" class="headerlink" title="docker 指令"></a>docker 指令</h1><ol>
-<li>拉取镜像<br><code>docker pull redis</code></li>
-<li>启动镜像<br>docker run  –name [name]  -d [镜像id] -p [绑定到宿主机的端口]<br>如 :<br><code>docker run  --name pipi-redis -d 0db2a690b89e -p 6379:6379</code><br><code>docker run -d -p 6739:6739 0db2a690b89e</code></li>
-<li>查看创建的容器<br>如：<code>docker ps -a</code></li>
-<li>删除容器<br>docker rm [容器id]</li>
-<li>查看容器日志 ：<br>docker logs [容器别名]<br>如：<code>docker logs pipi-redis</code></li>
-<li>查看容器内部进程<br>docker top [容器别名]<br>如：<code>docker top pipi-redis</code></li>
-<li>获取容器更多的信息<br>docker inspect [容器名]<br>如：<code>docker inspect pipi-redis</code>  </li>
-<li>列举所有镜像<br>如：<code>docker images</code></li>
-<li>查看对外端口<br>docker port <container name="" or="" id=""><br>如： <code>docker port</code></container></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/30/docker-基本操作指令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-maven-assembly打包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/29/maven-assembly打包/">maven assembly打包</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/29/maven-assembly打包/" class="archive-article-date">
-  	<time datetime="2017-05-29T14:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>assembly是一个非常有用的maven打包工具，主要作用为，将一个项目的代码及其依赖、配置文件、文档打包为一个可分发的包中。在这里介绍一下assembly插件打包的使用。例子是一个spring boot + thymleaf的例子，使用idea开发。项目地址：<a href="http://git.oschina.net/gongpipi/springbootdemo" target="_blank" rel="external">http://git.oschina.net/gongpipi/springbootdemo</a></p>
-<h2 id="1-使用assembly插件需要现在pom文件中配置一下，配置如下"><a href="#1-使用assembly插件需要现在pom文件中配置一下，配置如下" class="headerlink" title="1. 使用assembly插件需要现在pom文件中配置一下，配置如下"></a>1. 使用assembly插件需要现在pom文件中配置一下，配置如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;build&gt;</div><div class="line">   &lt;plugins&gt;</div><div class="line">       &lt;plugin&gt;</div><div class="line">           &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">           &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;</div><div class="line">           &lt;configuration&gt;</div><div class="line">                &lt;descriptors&gt;</div><div class="line">                    &lt;!--这个文件就是打包的描述文件，文件名随意--&gt;</div><div class="line">                   &lt;descriptor&gt;assembly.xml&lt;/descriptor&gt;</div><div class="line">               &lt;/descriptors&gt;</div><div class="line">               &lt;appendAssemblyId&gt;false&lt;/appendAssemblyId&gt;</div><div class="line">               &lt;archive&gt;</div><div class="line">                  &lt;manifest&gt;</div><div class="line">                  &lt;!--启动的主函数--&gt;</div><div class="line">                     &lt;mainClass&gt;com.sample.main&lt;/mainClass&gt;</div><div class="line">                  &lt;/manifest&gt;</div><div class="line">               &lt;/archive&gt;</div><div class="line">           &lt;/configuration&gt;</div><div class="line">           &lt;executions&gt;</div><div class="line">               &lt;execution&gt;</div><div class="line">                 &lt;phase&gt;package&lt;/phase&gt;</div><div class="line">                    &lt;goals&gt;</div><div class="line">                        &lt;goal&gt;single&lt;/goal&gt;</div><div class="line">                    &lt;/goals&gt;</div><div class="line">               &lt;/execution&gt;</div><div class="line">            &lt;/executions&gt;</div><div class="line">       &lt;/plugin&gt;</div><div class="line">    &lt;/plugins&gt;</div><div class="line">&lt;/build&gt;</div></pre></td></tr></table></figure>
-<h2 id="2-除了在项目的pom文件中配置assemble插件，还需要编写assmbly-xml，下面是一个简单的配置："><a href="#2-除了在项目的pom文件中配置assemble插件，还需要编写assmbly-xml，下面是一个简单的配置：" class="headerlink" title="2.除了在项目的pom文件中配置assemble插件，还需要编写assmbly.xml，下面是一个简单的配置："></a>2.除了在项目的pom文件中配置assemble插件，还需要编写assmbly.xml，下面是一个简单的配置：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;assembly xmlns=&quot;http://maven.apache.org/ASSEMBLY/2.0.0&quot;</div><div class="line">          xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">          xsi:schemaLocation=&quot;http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd&quot;&gt;</div><div class="line">    &lt;id&gt;$&#123;project.artifactId&#125;&lt;/id&gt;</div><div class="line">    &lt;!--打包格式 支持zip/tar/tar.gz/war/jar/dir--&gt;</div><div class="line">    &lt;formats&gt;</div><div class="line">        &lt;format&gt;tar.gz&lt;/format&gt;</div><div class="line">    &lt;/formats&gt;</div><div class="line">    &lt;includeBaseDirectory&gt;false&lt;/includeBaseDirectory&gt;</div><div class="line">    &lt;!--包含文件集--&gt;</div><div class="line">    &lt;fileSets&gt;</div><div class="line">        &lt;fileSet&gt;</div><div class="line">            &lt;!--配置文件输出目录--&gt;</div><div class="line">            &lt;outputDirectory&gt;/&lt;/outputDirectory&gt;</div><div class="line">            &lt;directory&gt;src/main/resources&lt;/directory&gt;</div><div class="line">        &lt;/fileSet&gt;</div><div class="line">    &lt;/fileSets&gt;</div><div class="line">    &lt;dependencySets&gt;</div><div class="line">        &lt;!--打包的jar--&gt;</div><div class="line">        &lt;dependencySet&gt;</div><div class="line">            &lt;outputDirectory&gt;lib&lt;/outputDirectory&gt;</div><div class="line">            &lt;scope&gt;runtime&lt;/scope&gt;</div><div class="line">            &lt;useProjectArtifact&gt;true&lt;/useProjectArtifact&gt;</div><div class="line">        &lt;/dependencySet&gt;</div><div class="line">        &lt;dependencySet&gt;</div><div class="line">            &lt;outputDirectory&gt;lib&lt;/outputDirectory&gt;</div><div class="line">            &lt;scope&gt;system&lt;/scope&gt;</div><div class="line">        &lt;/dependencySet&gt;</div><div class="line">    &lt;/dependencySets&gt;</div><div class="line">&lt;/assembly&gt;</div></pre></td></tr></table></figure>
-<h2 id="3-另外在这里再简单介绍下assembly-xml-文件的其他属性，具体属性的的可以参考官网的文档-http-maven-apache-org-components-plugins-maven-assembly-plugin-assembly-html"><a href="#3-另外在这里再简单介绍下assembly-xml-文件的其他属性，具体属性的的可以参考官网的文档-http-maven-apache-org-components-plugins-maven-assembly-plugin-assembly-html" class="headerlink" title="3.另外在这里再简单介绍下assembly.xml 文件的其他属性，具体属性的的可以参考官网的文档[http://maven.apache.org/components/plugins/maven-assembly-plugin/assembly.html]"></a>3.另外在这里再简单介绍下assembly.xml 文件的其他属性，具体属性的的可以参考官网的文档[<a href="http://maven.apache.org/components/plugins/maven-assembly-plugin/assembly.html" target="_blank" rel="external">http://maven.apache.org/components/plugins/maven-assembly-plugin/assembly.html</a>]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div></pre></td><td class="code"><pre><div class="line">&lt;assembly xmlns=&quot;http://maven.apache.org/ASSEMBLY/2.0.0&quot;</div><div class="line">          xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">          xsi:schemaLocation=&quot;http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd&quot;&gt;</div><div class="line">    &lt;id&gt;&lt;/id&gt;</div><div class="line">    &lt;!--打包格式 支持zip/tar/tar.gz/war/jar/dir--&gt;</div><div class="line">    &lt;formats&gt;&lt;/formats&gt;</div><div class="line">    &lt;!--类型boolean 如果为false,则解压后所有文件在当前目录，否则创建一个与项目名相同的目录、所有文件都在这个目录下--&gt;</div><div class="line">    &lt;includeBaseDirectory&gt;&lt;/includeBaseDirectory&gt;</div><div class="line">    &lt;!--生成的打包文件所在的基本目录--&gt;</div><div class="line">    &lt;baseDirectory&gt;&lt;/baseDirectory&gt;</div><div class="line">    &lt;!--是否生成站点目录boolean,生成的名字由插件的siteDirectory 属性决定--&gt;</div><div class="line">    &lt;includeSiteDirectory&gt;&lt;/includeSiteDirectory&gt;</div><div class="line">    &lt;!--关于容器的暂时不用管--&gt;</div><div class="line">    &lt;containerDescriptorHandlers&gt;</div><div class="line">        &lt;containerDescriptorHandler&gt;</div><div class="line">            &lt;handlerName/&gt;</div><div class="line">            &lt;configuration/&gt;</div><div class="line">        &lt;/containerDescriptorHandler&gt;</div><div class="line">    &lt;/containerDescriptorHandlers&gt;</div><div class="line">    &lt;!--包含的模块集--&gt;</div><div class="line">    &lt;moduleSets&gt;</div><div class="line">        &lt;moduleSet&gt;</div><div class="line">            &lt;useAllReactorProjects/&gt;</div><div class="line">            &lt;!--是否包含子模块、默认为true--&gt;</div><div class="line">            &lt;includeSubModules/&gt;</div><div class="line">            &lt;includes/&gt;</div><div class="line">            &lt;excludes/&gt;</div><div class="line">            &lt;sources&gt;</div><div class="line">                &lt;useDefaultExcludes/&gt;</div><div class="line">                &lt;outputDirectory/&gt;</div><div class="line">                &lt;includes/&gt;</div><div class="line">                &lt;excludes/&gt;</div><div class="line">                &lt;fileMode/&gt;</div><div class="line">                &lt;directoryMode/&gt;</div><div class="line">                &lt;fileSets&gt;</div><div class="line">                    &lt;fileSet&gt;</div><div class="line">                        &lt;useDefaultExcludes/&gt;</div><div class="line">                        &lt;outputDirectory/&gt;</div><div class="line">                        &lt;includes/&gt;</div><div class="line">                        &lt;excludes/&gt;</div><div class="line">                        &lt;fileMode/&gt;</div><div class="line">                        &lt;directoryMode/&gt;</div><div class="line">                        &lt;directory/&gt;</div><div class="line">                        &lt;lineEnding/&gt;</div><div class="line">                        &lt;filtered/&gt;</div><div class="line">                    &lt;/fileSet&gt;</div><div class="line">                &lt;/fileSets&gt;</div><div class="line">                &lt;includeModuleDirectory/&gt;</div><div class="line">                &lt;excludeSubModuleDirectories/&gt;</div><div class="line">                &lt;outputDirectoryMapping/&gt;</div><div class="line">            &lt;/sources&gt;</div><div class="line">            &lt;binaries&gt;</div><div class="line">                &lt;outputDirectory/&gt;</div><div class="line">                &lt;includes/&gt;</div><div class="line">                &lt;excludes/&gt;</div><div class="line">                &lt;fileMode/&gt;</div><div class="line">                &lt;directoryMode/&gt;</div><div class="line">                &lt;attachmentClassifier/&gt;</div><div class="line">                &lt;includeDependencies/&gt;</div><div class="line">                &lt;dependencySets&gt;</div><div class="line">                    &lt;dependencySet&gt;</div><div class="line">                        &lt;outputDirectory/&gt;</div><div class="line">                        &lt;includes/&gt;</div><div class="line">                        &lt;excludes/&gt;</div><div class="line">                        &lt;fileMode/&gt;</div><div class="line">                        &lt;directoryMode/&gt;</div><div class="line">                        &lt;useStrictFiltering/&gt;</div><div class="line">                        &lt;outputFileNameMapping/&gt;</div><div class="line">                        &lt;unpack/&gt;</div><div class="line">                        &lt;unpackOptions&gt;</div><div class="line">                            &lt;includes/&gt;</div><div class="line">                            &lt;excludes/&gt;</div><div class="line">                            &lt;filtered/&gt;</div><div class="line">                            &lt;lineEnding/&gt;</div><div class="line">                            &lt;useDefaultExcludes/&gt;</div><div class="line">                            &lt;encoding/&gt;</div><div class="line">                        &lt;/unpackOptions&gt;</div><div class="line">                        &lt;scope/&gt;</div><div class="line">                        &lt;useProjectArtifact/&gt;</div><div class="line">                        &lt;useProjectAttachments/&gt;</div><div class="line">                        &lt;useTransitiveDependencies/&gt;</div><div class="line">                        &lt;useTransitiveFiltering/&gt;</div><div class="line">                    &lt;/dependencySet&gt;</div><div class="line">                &lt;/dependencySets&gt;</div><div class="line">                &lt;unpack/&gt;</div><div class="line">                &lt;unpackOptions&gt;</div><div class="line">                    &lt;includes/&gt;</div><div class="line">                    &lt;excludes/&gt;</div><div class="line">                    &lt;filtered/&gt;</div><div class="line">                    &lt;lineEnding/&gt;</div><div class="line">                    &lt;useDefaultExcludes/&gt;</div><div class="line">                    &lt;encoding/&gt;</div><div class="line">                &lt;/unpackOptions&gt;</div><div class="line">                &lt;outputFileNameMapping/&gt;</div><div class="line">            &lt;/binaries&gt;</div><div class="line">        &lt;/moduleSet&gt;</div><div class="line">    &lt;/moduleSets&gt;</div><div class="line">    &lt;!--包含文件集--&gt;</div><div class="line">    &lt;fileSets&gt;</div><div class="line">        &lt;fileSet&gt;</div><div class="line">            &lt;useDefaultExcludes/&gt;</div><div class="line">            &lt;outputDirectory/&gt;</div><div class="line">            &lt;includes/&gt;</div><div class="line">            &lt;excludes/&gt;</div><div class="line">            &lt;fileMode/&gt;</div><div class="line">            &lt;directoryMode/&gt;</div><div class="line">            &lt;directory/&gt;</div><div class="line">            &lt;lineEnding/&gt;</div><div class="line">            &lt;filtered/&gt;</div><div class="line">        &lt;/fileSet&gt;</div><div class="line">    &lt;/fileSets&gt;</div><div class="line">    &lt;!--包含文件--&gt;</div><div class="line">    &lt;files&gt;</div><div class="line">        &lt;file&gt;</div><div class="line">            &lt;source/&gt;</div><div class="line">            &lt;outputDirectory/&gt;</div><div class="line">            &lt;destName/&gt;</div><div class="line">            &lt;fileMode/&gt;</div><div class="line">            &lt;lineEnding/&gt;</div><div class="line">            &lt;filtered/&gt;</div><div class="line">        &lt;/file&gt;</div><div class="line">    &lt;/files&gt;</div><div class="line">    &lt;dependencySets&gt;</div><div class="line">        &lt;dependencySet&gt;</div><div class="line">            &lt;!--打包后依赖包存放的目录--&gt;</div><div class="line">            &lt;outputDirectory&gt;&lt;/outputDirectory&gt;</div><div class="line">            &lt;!--选择需要assembly的包，如果这个标签存在则执行，否则不执行--&gt;</div><div class="line">            &lt;includes&gt;&lt;/includes&gt;</div><div class="line">            &lt;!--选择需要排除的包，一般不用到这个标签，和includes一样存在才起作用--&gt;</div><div class="line">            &lt;excludes&gt;&lt;/excludes&gt;</div><div class="line">            &lt;!--文件操作权限，类似unix文件权限。默认为644--&gt;</div><div class="line">            &lt;fileMode/&gt;</div><div class="line">            &lt;!--同filemode--&gt;</div><div class="line">            &lt;directoryMode/&gt;</div><div class="line">            &lt;!----&gt;</div><div class="line">            &lt;useStrictFiltering/&gt;</div><div class="line">            &lt;!--文件名映射。或者说输出文件名格式--&gt;</div><div class="line">            &lt;outputFileNameMapping/&gt;</div><div class="line">            &lt;!--将依赖包解压到一个特定的文件、默认为false,直接copy--&gt;</div><div class="line">            &lt;unpack&gt;false&lt;/unpack&gt;</div><div class="line">            &lt;unpackOptions&gt;</div><div class="line">                &lt;includes/&gt;</div><div class="line">                &lt;excludes/&gt;</div><div class="line">                &lt;filtered/&gt;</div><div class="line">                &lt;lineEnding/&gt;</div><div class="line">                &lt;useDefaultExcludes/&gt;</div><div class="line">                &lt;encoding/&gt;</div><div class="line">            &lt;/unpackOptions&gt;</div><div class="line">            &lt;scope/&gt;</div><div class="line">            &lt;useProjectArtifact/&gt;</div><div class="line">            &lt;useProjectAttachments/&gt;</div><div class="line">            &lt;useTransitiveDependencies/&gt;</div><div class="line">            &lt;useTransitiveFiltering/&gt;</div><div class="line">        &lt;/dependencySet&gt;</div><div class="line">    &lt;/dependencySets&gt;</div><div class="line">    &lt;!--maven库--&gt;</div><div class="line">    &lt;repositories&gt;</div><div class="line">        &lt;repository&gt;</div><div class="line">            &lt;outputDirectory/&gt;</div><div class="line">            &lt;includes/&gt;</div><div class="line">            &lt;excludes/&gt;</div><div class="line">            &lt;fileMode/&gt;</div><div class="line">            &lt;directoryMode/&gt;</div><div class="line">            &lt;includeMetadata/&gt;</div><div class="line">            &lt;groupVersionAlignments&gt;</div><div class="line">                &lt;groupVersionAlignment&gt;</div><div class="line">                    &lt;id/&gt;</div><div class="line">                    &lt;version/&gt;</div><div class="line">                    &lt;excludes/&gt;</div><div class="line">                &lt;/groupVersionAlignment&gt;</div><div class="line">            &lt;/groupVersionAlignments&gt;</div><div class="line">            &lt;scope/&gt;</div><div class="line">        &lt;/repository&gt;</div><div class="line">    &lt;/repositories&gt;</div><div class="line">    &lt;componentDescriptors/&gt;</div><div class="line">&lt;/assembly&gt;</div></pre></td></tr></table></figure>
-<h2 id="4-之后打包代码，可以在target-目录下看到一个以tar-gz后缀名结尾的文件"><a href="#4-之后打包代码，可以在target-目录下看到一个以tar-gz后缀名结尾的文件" class="headerlink" title="4.之后打包代码，可以在target 目录下看到一个以tar.gz后缀名结尾的文件"></a>4.之后打包代码，可以在target 目录下看到一个以tar.gz后缀名结尾的文件</h2><p>如：web-template-0.0.1-SNAPSHOT.tar.gz</p>
-<p>copy *.tar.gz文件到 linux服务器上，使用指令<code>tar -zxvf web-template-0.0.1-SNAPSHOT.tar.gz</code> 解压文件，可以得到配置文件，静态文件等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@pipi128 template]# ls</div><div class="line">application.properties  bin  console.log  lib  logback.xml  sbin  start.sh  static  target  templates</div></pre></td></tr></table></figure></p>
-<p>打包后的所有jar 包都在lib目录下。在lib目录下找到<code>web-template-0.0.1-SNAPSHOT.jar</code> 文件，这个就是我们自己写的代码打成的包，这个包名和maven的pom文件中配置的是相同的。 </p>
-<p>使用java命令运行这个jar <code>java -jar lib/web-template-0.0.1-SNAPSHOT.jar</code><br>,就可以启动我们的web程序了。</p>
-<p><strong>另外需要注意的是:启动程序时需要在配置文件所在的目录启动，否则程序会找不到配置文件</strong></p>
-<h2 id="5-linux相关脚本"><a href="#5-linux相关脚本" class="headerlink" title="5.linux相关脚本"></a>5.linux相关脚本</h2><p>因为linux的脚本还不是特别熟，先记录下嘿嘿</p>
-<ol>
-<li>查看程序运行的进程：<code>ps -ef|grep web-template-0.0.1-SNAPSHOT.jar|grep -v grep|awk &#39;{print $2}&#39;</code><h2 id="6-关于maven-pom-xml-的parent标签的理解"><a href="#6-关于maven-pom-xml-的parent标签的理解" class="headerlink" title="6.关于maven pom.xml 的parent标签的理解"></a>6.关于maven pom.xml 的parent标签的理解</h2>parent 标签可以指定jar包的版本，子模块继承了父模块后，就可以在子模块中添加依赖时不用指定版本号，这样就保证了各个模块间使用的jar包一致。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">maven</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/29/maven-assembly打包/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-markdown 语法熟悉" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/markdown 语法熟悉/">markdown 语法熟悉</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/markdown 语法熟悉/" class="archive-article-date">
-  	<time datetime="2017-05-05T13:16:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一-书写工具"><a href="#一-书写工具" class="headerlink" title="一.书写工具"></a>一.书写工具</h1><p>我使用的是有道云笔记的编辑工具，可以边写变看效果。蛮好用的。可以在有道云笔记官网<a href="http://download.ydstatic.com/notewebsite/downloads/YNote.exe" target="_blank" rel="external">下载</a></p>
-<h1 id="二-markdown语法"><a href="#二-markdown语法" class="headerlink" title="二.markdown语法"></a>二.markdown语法</h1><h2 id="1-标题-h"><a href="#1-标题-h" class="headerlink" title="1.标题(h)"></a>1.标题(h)</h2><p>在行首添加1-6个#号，对应标题的1到6阶，如：</p>
-<blockquote>
-<p>#.  这是 </p>
-<p>##.  这是 </p>
-<p>######.  这是 </p>
-</blockquote>
-<p>同时数字越大，标题字越小，</p>
-<h2 id="2-区块引用-blockquote"><a href="#2-区块引用-blockquote" class="headerlink" title="2.区块引用(blockquote)"></a>2.区块引用(blockquote)</h2><p>“&gt;” 表示块引用，类似邮件中引言，邮件中的引言是啥我也不懂..，另外在区块引用中其他的markdown语法也是可以使用的。效果如下：</p>
-<blockquote>
-<p>区块引用1<br>区块引用2</p>
-</blockquote>
-<h2 id="3-列表-li"><a href="#3-列表-li" class="headerlink" title="3.列表(li)"></a>3.列表(li)</h2><p>无序列表可以使用 “*”、“+”、“-” 三种标签</p>
-<ul>
-<li>red</li>
-<li>green</li>
-<li>blue</li>
-</ul>
-<h2 id="4-有序列表使用数字后面跟一个点，别忘了空格"><a href="#4-有序列表使用数字后面跟一个点，别忘了空格" class="headerlink" title="4.有序列表使用数字后面跟一个点，别忘了空格"></a>4.有序列表使用数字后面跟一个点，别忘了空格</h2><ol>
-<li>red</li>
-<li>green</li>
-<li>blue</li>
-</ol>
-<h2 id="5-代码区块，顾名思义，代码区块就是为代码而准备的-code"><a href="#5-代码区块，顾名思义，代码区块就是为代码而准备的-code" class="headerlink" title="5.代码区块，顾名思义，代码区块就是为代码而准备的(code)"></a>5.代码区块，顾名思义，代码区块就是为代码而准备的(code)</h2><p>，他可以保持代码的结构，语法很简单，使用一个四个空格或者一个tab键即可。</p>
-<pre><code>while(true){
-    ...
-}
-</code></pre><h2 id="6-分割符号"><a href="#6-分割符号" class="headerlink" title="6.分割符号"></a>6.分割符号</h2><p>语法：”—“ 或者 “<em>*</em>“ ，当然我还是推荐三减，方便！</p>
-<h2 id="7-链接（a）"><a href="#7-链接（a）" class="headerlink" title="7.链接（a）"></a>7.链接（a）</h2><ul>
-<li><p>行内链接语法 “[baidu](www.baidu.com)”<br>效果 <a href="www.baidu.com">baidu</a></p>
-</li>
-<li><p>参考链接 语法 “[名词][id]“<br>然后在文章的任意部分定义该链接即可<br>如[1]: “<a href="http://example.com/" target="_blank" rel="external">http://example.com/</a>“</p>
-</li>
-</ul>
-<h2 id="8-换行"><a href="#8-换行" class="headerlink" title="8 换行"></a>8 换行</h2><p>需要两个空格加回车<br>换行成功</p>
-<h2 id="9-强调"><a href="#9-强调" class="headerlink" title="9.强调"></a>9.强调</h2><p>效果：<em>很重要</em><br>可以看到字变为了斜体<br>语法是使用两个“_”或者两个“*”将强调的内容包围起来。</p>
-<h2 id="10-小段行内代码"><a href="#10-小段行内代码" class="headerlink" title="10.小段行内代码"></a>10.小段行内代码</h2><p>效果：<code>print(hello,world)</code><br>语法：使用“`”（tab上面那个键）</p>
-<h2 id="11-图片"><a href="#11-图片" class="headerlink" title="11.图片"></a>11.图片</h2><p>效果：<img src="/img/angrybird.png" alt="愤怒的小鸟"><br>语法和链接的语法相似，只不过多了一个“!”</p>
-<h2 id="12-反斜杠"><a href="#12-反斜杠" class="headerlink" title="12.反斜杠"></a>12.反斜杠</h2><p>可以将markdown语法关键字打印出来</p>
-<h1 id="三-结束"><a href="#三-结束" class="headerlink" title="三.结束"></a>三.结束</h1><p>第一篇博客写完哈哈哈</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/hexo/" class="article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/markdown 语法熟悉/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-05T13:00:08.532Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-  
 
 
           </div>
@@ -570,10 +223,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
