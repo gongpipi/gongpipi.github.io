@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | Gongpipi&#39;s Blog</title>
+  <title>docker 基本操作指令 | Gongpipi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初级程序员的一小步">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gongpipi&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="安装docker yum install docker 启动服务 service docker start  推荐两个国内的docker镜像121.http://hub.daocloud.io/2.https://c.163.com/hub#/m/home/ docker 指令 拉取镜像docker pull redis 启动镜像docker run  –name [name]  -d [镜像id">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 基本操作指令">
+<meta property="og:url" content="http://yoursite.com/2017/05/30/docker-基本操作指令/index.html">
 <meta property="og:site_name" content="Gongpipi&#39;s Blog">
-<meta property="og:description" content="初级程序员的一小步">
+<meta property="og:description" content="安装docker yum install docker 启动服务 service docker start  推荐两个国内的docker镜像121.http://hub.daocloud.io/2.https://c.163.com/hub#/m/home/ docker 指令 拉取镜像docker pull redis 启动镜像docker run  –name [name]  -d [镜像id">
+<meta property="og:updated_time" content="2017-06-11T13:48:01.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gongpipi&#39;s Blog">
-<meta name="twitter:description" content="初级程序员的一小步">
+<meta name="twitter:title" content="docker 基本操作指令">
+<meta name="twitter:description" content="安装docker yum install docker 启动服务 service docker start  推荐两个国内的docker镜像121.http://hub.daocloud.io/2.https://c.163.com/hub#/m/home/ docker 指令 拉取镜像docker pull redis 启动镜像docker run  –name [name]  -d [镜像id">
   
     <link rel="alternative" href="/atom.xml" title="Gongpipi&#39;s Blog" type="application/atom+xml">
   
@@ -144,198 +145,163 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-docker-基本操作指令" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" class="archive-article-date">
-  	<time datetime="2017-06-11T13:52:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/11/spring-boot-配置spring-session-redis-md/">spring-boot 配置spring-session-redis.md</a>
+    <h1 class="article-title" itemprop="name">
+      docker 基本操作指令
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/30/docker-基本操作指令/" class="archive-article-date">
+        
+        <a href="/2017/05/30/docker-基本操作指令/" class="archive-article-date">
   	<time datetime="2017-05-30T09:00:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/30/docker-基本操作指令/">docker 基本操作指令</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><ol>
+<li><code>yum install docker</code></li>
+<li>启动服务 <code>service docker start</code></li>
+</ol>
+<p>推荐两个国内的docker镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.http://hub.daocloud.io/</div><div class="line">2.https://c.163.com/hub#/m/home/</div></pre></td></tr></table></figure></p>
+<h1 id="docker-指令"><a href="#docker-指令" class="headerlink" title="docker 指令"></a>docker 指令</h1><ol>
+<li>拉取镜像<br><code>docker pull redis</code></li>
+<li>启动镜像<br>docker run  –name [name]  -d [镜像id] -p [绑定到宿主机的端口]<br>如 :<br><code>docker run  --name pipi-redis -d 0db2a690b89e -p 6379:6379</code><br><code>docker run -d -p 6739:6739 0db2a690b89e</code></li>
+<li>查看创建的容器<br>如：<code>docker ps -a</code></li>
+<li>删除容器<br>docker rm [容器id]</li>
+<li>查看容器日志 ：<br>docker logs [容器别名]<br>如：<code>docker logs pipi-redis</code></li>
+<li>查看容器内部进程<br>docker top [容器别名]<br>如：<code>docker top pipi-redis</code></li>
+<li>获取容器更多的信息<br>docker inspect [容器名]<br>如：<code>docker inspect pipi-redis</code>  </li>
+<li>列举所有镜像<br>如：<code>docker images</code></li>
+<li>查看对外端口<br>docker port <container name="" or="" id=""><br>如： <code>docker port</code></container></li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/30/docker-基本操作指令/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/29/maven-assembly打包/" class="archive-article-date">
-  	<time datetime="2017-05-29T14:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/29/maven-assembly打包/">maven assembly打包</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">maven</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/markdown 语法熟悉/" class="archive-article-date">
-  	<time datetime="2017-05-05T13:16:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/markdown 语法熟悉/">markdown 语法熟悉</a>
-    </h1>
+    <a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          spring-boot 配置spring-session-redis.md
+        
+      </div>
+    </a>
   
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/hexo/" class="article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+    <a href="/2017/05/29/maven-assembly打包/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">maven assembly打包</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-05T13:00:08.532Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -358,8 +324,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
