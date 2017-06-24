@@ -5,18 +5,18 @@
     
     <title>spring-boot 配置spring-session-redis.md | Gongpipi&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成">
+    <meta name="description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一">
 <meta name="keywords" content="springboot,spring-session">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring-boot 配置spring-session-redis.md">
 <meta property="og:url" content="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/index.html">
 <meta property="og:site_name" content="Gongpipi&#39;s Blog">
-<meta property="og:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成">
+<meta property="og:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一">
 <meta property="og:image" content="https://gongpipi.github.io/img/秘鲁.jpg">
-<meta property="og:updated_time" content="2017-06-24T07:38:33.052Z">
+<meta property="og:updated_time" content="2017-06-24T08:17:07.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-boot 配置spring-session-redis.md">
-<meta name="twitter:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成">
+<meta name="twitter:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一">
 <meta name="twitter:image" content="https://gongpipi.github.io/img/秘鲁.jpg">
     
 
@@ -189,6 +189,14 @@
             <section id="main"><article id="post-spring-boot-配置spring-session-redis-md" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+            
+	
+		<img src="/img/秘鲁.jpg" class="article-banner" />
+	
+
+
+
+        
         
             <header class="article-header">
                 
@@ -224,8 +232,7 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p><img src="/img/秘鲁.jpg" alt="秘鲁"></p>
-<h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。  </p>
+            <h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。  </p>
 <p>另外还有一点，<strong>web端的sessionid 好像也是共享的</strong></p>
 <h3 id="1-使用spring-session"><a href="#1-使用spring-session" class="headerlink" title="1. 使用spring session"></a>1. 使用spring session</h3><p>spring boot 使用 spring session 很简单，总共需要3步即可完成配置</p>
 <ol>
@@ -257,7 +264,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj4azbxnd000fiov13xpdwuyq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj4azsgou000fw4v14w6ojpgc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -420,7 +427,7 @@
                             <a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/img/秘鲁.jpg)" alt="spring-boot 配置spring-session-redis.md" class="thumbnail-image"></span>
     
 </a>
 
