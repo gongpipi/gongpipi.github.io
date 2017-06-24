@@ -12,16 +12,18 @@
 <meta property="og:url" content="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/index.html">
 <meta property="og:site_name" content="Gongpipi&#39;s Blog">
 <meta property="og:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一">
-<meta property="og:image" content="https://gongpipi.github.io/img/秘鲁.jpg">
-<meta property="og:updated_time" content="2017-06-24T08:17:07.031Z">
+<meta property="og:image" content="https://gongpipi.github.io/img/风景/秘鲁.jpg">
+<meta property="og:updated_time" content="2017-06-24T12:47:08.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-boot 配置spring-session-redis.md">
 <meta name="twitter:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一">
-<meta name="twitter:image" content="https://gongpipi.github.io/img/秘鲁.jpg">
+<meta name="twitter:image" content="https://gongpipi.github.io/img/风景/秘鲁.jpg">
     
 
     
 
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -191,7 +193,7 @@
         
             
 	
-		<img src="/img/秘鲁.jpg" class="article-banner" />
+		<img src="/img/风景/秘鲁.jpg" class="article-banner" />
 	
 
 
@@ -232,22 +234,21 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。  </p>
-<p>另外还有一点，<strong>web端的sessionid 好像也是共享的</strong></p>
+            <h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。<br><a id="more"></a><br>另外还有一点，<strong>web端的sessionid 好像也是共享的</strong></p>
 <h3 id="1-使用spring-session"><a href="#1-使用spring-session" class="headerlink" title="1. 使用spring session"></a>1. 使用spring session</h3><p>spring boot 使用 spring session 很简单，总共需要3步即可完成配置</p>
 <ol>
 <li>在pom文件之配置依赖，版本继承spring-parent即可</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.springframework.session&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;spring-session-data-redis&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
 <ol>
 <li>在application.properties中添加相应的配置，在每个web app中都要配置</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># session 存储类型</div><div class="line">spring.session.store-type= redis</div><div class="line"></div><div class="line">spring.redis.database=1</div><div class="line">spring.redis.port=6379</div><div class="line">spring.redis.host=192.168.52.131</div><div class="line"># spring.redis.password=secret # 这里我的redis没有密码，所以我就没有配置</div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># session 存储类型</span></div><div class="line"><span class="string">spring.session.store-type=</span> <span class="string">redis</span></div><div class="line"></div><div class="line"><span class="string">spring.redis.database=1</span></div><div class="line"><span class="string">spring.redis.port=6379</span></div><div class="line"><span class="string">spring.redis.host=192.168.52.131</span></div><div class="line"><span class="comment"># spring.redis.password=secret # 这里我的redis没有密码，所以我就没有配置</span></div></pre></td></tr></table></figure>
 <ol>
-<li>在spring-boot 启动类上加入注解<code>@EnableRedisHttpSession</code>，如：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@SpringBootApplication</div><div class="line">@EnableRedisHttpSession</div><div class="line">public class JspTomcatEmbeApplication extends SpringBootServletInitializer &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) &#123;</div><div class="line">        return application.sources(JspTomcatEmbeApplication.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        SpringApplication.run(JspTomcatEmbeApplication.class, args);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>在spring-boot 启动类上加入注解<code>@EnableRedisHttpSession</code>，如：  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SpringBootApplication</span></div><div class="line"><span class="meta">@EnableRedisHttpSession</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JspTomcatEmbeApplication</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder application)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> application.sources(JspTomcatEmbeApplication.class);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        SpringApplication.run(JspTomcatEmbeApplication.class, args);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="2-在controller中加入方法，验证session-id是否一致"><a href="#2-在controller中加入方法，验证session-id是否一致" class="headerlink" title="2. 在controller中加入方法，验证session id是否一致"></a>2. 在controller中加入方法，验证session id是否一致</h3><p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@GetMapping(&quot;/session&quot;)</div><div class="line">@ResponseBody</div><div class="line">public String getSessionId(HttpSession session) &#123;</div><div class="line">    return session.getId();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2-在controller中加入方法，验证session-id是否一致"><a href="#2-在controller中加入方法，验证session-id是否一致" class="headerlink" title="2. 在controller中加入方法，验证session id是否一致"></a>2. 在controller中加入方法，验证session id是否一致</h3><p>代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@GetMapping</span>(<span class="string">"/session"</span>)</div><div class="line"><span class="meta">@ResponseBody</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getSessionId</span><span class="params">(HttpSession session)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> session.getId();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>分别请求各个项目的地址<code>http://localhost:8080/session</code> 和 <code>http://localhost:8081/session</code><br>可以得到相同的 session id 如 <code>9141de53-5de1-4c3c-a948-cd8b223836b2</code></p>
 <h3 id="3-spring-session-还可以存储到数据库中。具体可以参考官网的例子和文档"><a href="#3-spring-session-还可以存储到数据库中。具体可以参考官网的例子和文档" class="headerlink" title="3. spring-session 还可以存储到数据库中。具体可以参考官网的例子和文档"></a>3. spring-session 还可以存储到数据库中。具体可以参考官网的例子和文档</h3><ol>
 <li>本例子项目地址 <a href="https://git.oschina.net/gongpipi/springbootdemo/tree/master/web-template" target="_blank" rel="external">https://git.oschina.net/gongpipi/springbootdemo/tree/master/web-template</a></li>
@@ -264,7 +265,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj4azsgou000fw4v14w6ojpgc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj4b1dvz9000f0ov195f15ie6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -389,7 +390,7 @@
                             <a href="/2017/06/23/hexo-指令/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/img/风景/hexo.png)" alt="hexo 指令" class="thumbnail-image"></span>
     
 </a>
 
@@ -408,7 +409,7 @@
                             <a href="/2017/06/23/redis-操作/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/img/程序员表情/打死不改bug.jpg)" alt="redis 操作" class="thumbnail-image"></span>
     
 </a>
 
@@ -427,7 +428,7 @@
                             <a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/秘鲁.jpg)" alt="spring-boot 配置spring-session-redis.md" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/风景/秘鲁.jpg)" alt="spring-boot 配置spring-session-redis.md" class="thumbnail-image"></span>
     
 </a>
 
@@ -446,7 +447,7 @@
                             <a href="/2017/05/30/docker-基本操作指令/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/img/程序员表情/老子再也不写代码了.gif)" alt="docker 基本操作指令" class="thumbnail-image"></span>
     
 </a>
 
@@ -465,7 +466,7 @@
                             <a href="/2017/05/29/maven-assembly打包/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/img/表情/23.gif)" alt="maven assembly打包" class="thumbnail-image"></span>
     
 </a>
 
