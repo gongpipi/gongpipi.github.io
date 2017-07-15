@@ -3,17 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签: markdown | Gongpipi&#39;s Blog</title>
+    <title>windows 部署mysql 5.7.12 | Gongpipi&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="初级程序员的一小步">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gongpipi&#39;s Blog">
-<meta property="og:url" content="https://gongpipi.github.io/tags/markdown/index.html">
+    <meta name="description" content="一、新装mysql(1). 官网下载mysql 安装包，下载链接https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip，下载后需要解压。(2). 复制默认配置文件my-default.ini，并命名为my.ini 使用记事本打开，修改如下配置1234567891011[mysqld]basedir = D:\Progra">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows 部署mysql 5.7.12">
+<meta property="og:url" content="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/index.html">
 <meta property="og:site_name" content="Gongpipi&#39;s Blog">
-<meta property="og:description" content="初级程序员的一小步">
+<meta property="og:description" content="一、新装mysql(1). 官网下载mysql 安装包，下载链接https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip，下载后需要解压。(2). 复制默认配置文件my-default.ini，并命名为my.ini 使用记事本打开，修改如下配置1234567891011[mysqld]basedir = D:\Progra">
+<meta property="og:image" content="https://gongpipi.github.io/img/文艺/learnhard.jpg">
+<meta property="og:updated_time" content="2017-07-15T04:32:25.769Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gongpipi&#39;s Blog">
-<meta name="twitter:description" content="初级程序员的一小步">
+<meta name="twitter:title" content="windows 部署mysql 5.7.12">
+<meta name="twitter:description" content="一、新装mysql(1). 官网下载mysql 安装包，下载链接https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip，下载后需要解压。(2). 复制默认配置文件my-default.ini，并命名为my.ini 使用记事本打开，修改如下配置1234567891011[mysqld]basedir = D:\Progra">
+<meta name="twitter:image" content="https://gongpipi.github.io/img/文艺/learnhard.jpg">
     
 
     
@@ -133,50 +137,175 @@
 
         <div class="outer">
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#markdown</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-windows-部署mysql-5-7-12" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/05/markdown 语法熟悉/">markdown 语法熟悉</a>
+        <h1 class="article-title" itemprop="name">
+            windows 部署mysql 5.7.12
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/05/05/markdown 语法熟悉/">
-            <time datetime="2017-05-05T13:16:39.000Z" itemprop="datePublished">2017-05-05</time>
+        <a href="/2017/07/15/windows-部署mysql-5-7-12/">
+            <time datetime="2017-07-15T04:12:33.000Z" itemprop="datePublished">2017-07-15</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/hexo/">hexo</a>
-    </div>
-
-                    
+                        
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/hexo/">hexo</a>, <a class="tag-link" href="/tags/markdown/">markdown</a>
+        <a class="tag-link" href="/tags/mysql/">mysql</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、新装mysql"><a href="#一、新装mysql" class="headerlink" title="一、新装mysql"></a>一、新装mysql</h1><p>(1). 官网下载mysql 安装包，下载链接<a href="https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip，下载后需要解压。" target="_blank" rel="external">https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip，下载后需要解压。</a><br>(2). 复制默认配置文件my-default.ini，并命名为my.ini 使用记事本打开，修改如下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line">basedir = D:\Program Files\mysql-5.7.12-winx64  # 解压后mysql的路径</div><div class="line">datadir = D:\Program Files\mysql-5.7.12-winx64\data # 数据目录</div><div class="line"></div><div class="line">#设置编码格式</div><div class="line">default-storage-engine=INNODB</div><div class="line">character-set-server=utf8</div><div class="line">collation-server=utf8_general_ci</div><div class="line"></div><div class="line">[mysql]</div><div class="line">default-character-set=utf8</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>(3). 打开windows控制台，cd到mysql的解压目录的bin目录下，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;cd:</div><div class="line">&gt;cd D:\Program Files\mysql-5.7.12-winx64\bin</div></pre></td></tr></table></figure></p>
+<p>当然也可以将 D:\Program Files\mysql-5.7.12-winx64\bin加入到path环境变量里面，这样就不用每次都切换到mysql的安装目录了。运行指令，初始化mysql<br><code>mysqld --initialize-insecure --user=mysql</code><br>(4). 安装mysql服务并启动<br><code>mysqld -install</code><br><code>net start mysql</code><br>(5). 启动成功后，需要修改初始密码，首次登陆时不用输入密码，直接回车即可进入mysql。如果启动失败，重新安装，重新安装的教程在后面。  </p>
+<ul>
+<li>无密码登录<br><code>mysql -uroot -p</code></li>
+<li>修改root用户密码<br><code>mysql&gt;update mysql.user set authentication_string=password(&#39;root&#39;) where user=&#39;root&#39; and Host = &#39;localhost&#39;;</code>  </li>
+<li>刷新权限<br><code>mysql&gt;flush privileges;</code>  </li>
+<li>退出mysql<br><code>mysql&gt;exit</code><br>(6). 退出后即可使用root用户登录（密码为刚才修改的root<br><code>mysql -uroot -p</code><h1 id="二、重装mysql"><a href="#二、重装mysql" class="headerlink" title="二、重装mysql"></a>二、重装mysql</h1></li>
+</ul>
+<ol>
+<li>首先删除data数据目录,如：D:\Program Files\mysql-5.7.12-winx64\data </li>
+<li>注销服务(注意切换到mysql安装的bin目录下)<br><code>mysqld -remove</code><br>3.初始化（换个cmd窗口）<br><code>mysqld --initialize-insecure --user=mysql</code><br>4.安装服务<br><code>mysqld -install</code><br>5.后面的修改密码的步骤和第一次安装一样。<h1 id="三、其他问题"><a href="#三、其他问题" class="headerlink" title="三、其他问题"></a>三、其他问题</h1></li>
+<li>使用其他客户端软件无法登陆 mysql;  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ERROR 1862 (HY000): Your password has expired. To log in you must  </div><div class="line">change it using a client that supports expired passwords.</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>解决方法：只需重新修改下密码即可，修改方式如下：<br>以root权限登录mysql：（这里我的账户是root，密码也是root）<br><code>mysql -uroot -proot</code><br>然后更改密码：<br><code>SET PASSWORD = PASSWORD(&#39;root&#39;);</code></p>
+<ol>
+<li>内网其他主机不能连到mysql<br>错误：<code>1130 host’xxx’ is not allowed connect ...</code><br>运行命令：<br><code>mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;root&#39; WITH GRANT OPTION;</code><br>给某个人授权：<br><code>mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;192.168.1.3&#39; IDENTIFIED BY &#39;root&#39; WITH GRANT OPTION;</code></li>
+<li>mysql 设置时区<br><code>set global time_zone = &#39;+8:00&#39;;</code></li>
+<li>重置mysql登录密码<br>I. 停止MYSQL服务，CMD打开DOS窗口，输入 net stop mysql<br>II. 在CMD命令行窗口，进入MYSQL安装目录<br>III. 进入mysql安全模式，即当mysql起来后，不用输入密码就能进入数据库。 命令为：<br><code>mysqld -nt --skip-grant-tables</code><br>IV. 重新打开一个CMD命令行窗口，输入<code>mysql -uroot -p</code>，使用空密码的方式登录MySQL（不用输入密码，直接按回车）<br>V. 输入以下命令开始修改root用户的密码（注意：命令中mysql.user中间有个“点”）<br><code>update mysql.user set authentication_string=password(&#39;root&#39;) where user=&#39;root&#39; and Host = &#39;localhost&#39;;</code><br>VI. 刷新权限表 <code>mysql&gt; flush privileges;</code><br>VII. 退出   <code>mysql&gt; quit</code> 这样MYSQL超级管理员账号 ROOT已经重新设置好了，接下来 在任务管理器里结束掉 mysql-nt.exe 这个进程，重新启动MYSQL即可！（也可以直接重新启动服务器） MYSQL重新启动后，就可以用新设置的ROOT密码登陆MYSQL了！ </li>
+</ol>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/" data-id="cj54sr9pr000hsgv1u0w25bso" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/06/23/hexo-指令/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">hexo 指令</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -358,11 +487,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/';
+        
+        this.page.identifier = 'windows-部署mysql-5-7-12';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();

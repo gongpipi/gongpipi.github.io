@@ -66,16 +66,6 @@
                 
             </nav>
             
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/angrybird.png" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
             <div id="search-form-wrap">
 
     <form class="search-form">
@@ -143,54 +133,135 @@
 
         <div class="outer">
             
+            <section id="main">
+    <article id="post-windows-部署mysql-5-7-12" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/15/windows-部署mysql-5-7-12/">windows 部署mysql 5.7.12</a>
+        </h1>
+    
 
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/angrybird.png" />
-            <h2 id="name">gongpipi</h2>
-            <h3 id="title">java开发者</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>无锡</span>
-            <a id="follow" target="_blank" href="https://github.com/gongpipi">关注我</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                7
-                <span>文章</span>
-            </div>
-            <div class="article-info-block">
-                8
-                <span>标签</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="https://github.com/gongpipi" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="mailto:1446560082@qq.com" target="_blank" title="email" class=tooltip>
-                            <i class="fa fa-email"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/15/windows-部署mysql-5-7-12/">
+            <time datetime="2017-07-15T04:12:33.000Z" itemprop="datePublished">2017-07-15</time>
+        </a>
     </div>
-</aside>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/mysql/">mysql</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="一、新装mysql"><a href="#一、新装mysql" class="headerlink" title="一、新装mysql"></a>一、新装mysql</h1><p>(1). 官网下载mysql 安装包，下载链接<a href="https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip，下载后需要解压。" target="_blank" rel="external">https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip，下载后需要解压。</a><br>(2). 复制默认配置文件my-default.ini，并命名为my.ini 使用记事本打开，修改如下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line">basedir = D:\Program Files\mysql-5.7.12-winx64  # 解压后mysql的路径</div><div class="line">datadir = D:\Program Files\mysql-5.7.12-winx64\data # 数据目录</div><div class="line"></div><div class="line">#设置编码格式</div><div class="line">default-storage-engine=INNODB</div><div class="line">character-set-server=utf8</div><div class="line">collation-server=utf8_general_ci</div><div class="line"></div><div class="line">[mysql]</div><div class="line">default-character-set=utf8</div></pre></td></tr></table></figure></p></p>
+            <p class="article-more-link">
+                <a href="/2017/07/15/windows-部署mysql-5-7-12/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/" data-id="cj54sr9pr000hsgv1u0w25bso" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
 
             
-            <section id="main">
+    
+        <a href="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-hexo-指令" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -242,7 +313,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/23/hexo-指令/" data-id="cj4bcl49a0007vgv1fkxcvah8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/23/hexo-指令/" data-id="cj54sr9ot0002sgv1mn8w1hr7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -376,7 +447,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/23/redis-操作/" data-id="cj4bcl4950005vgv1tfhxvblv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/23/redis-操作/" data-id="cj54sr9pp000fsgv1sxymx6ej" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -514,7 +585,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj4bcl49q000fvgv1cpnlj7j1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj54sr9pn000esgv1q5zk3wsc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -649,7 +720,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/30/docker-基本操作指令/" data-id="cj4bcl48p0000vgv1l5hwlctm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/30/docker-基本操作指令/" data-id="cj54sr9om0000sgv1irfxqb10" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -778,7 +849,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/29/maven-assembly打包/" data-id="cj4bcl49o000dvgv19kj7p0r9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/29/maven-assembly打包/" data-id="cj54sr9pi0009sgv1zsgitcr5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -918,7 +989,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/05/markdown 语法熟悉/" data-id="cj4bcl49l0009vgv1orzuoau3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/05/markdown 语法熟悉/" data-id="cj54sr9p60007sgv1ljx54o1t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1044,7 +1115,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/05/hello-world/" data-id="cj4bcl48w0002vgv1qeqr6aca" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/05/hello-world/" data-id="cj54sr9p30005sgv1huxihhzw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1135,6 +1206,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/07/15/windows-部署mysql-5-7-12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/文艺/learnhard.jpg)" alt="windows 部署mysql 5.7.12" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/15/windows-部署mysql-5-7-12/" class="title">windows 部署mysql 5.7.12</a></p>
+                            <p class="item-date"><time datetime="2017-07-15T04:12:33.000Z" itemprop="datePublished">2017-07-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/06/23/hexo-指令/" class="thumbnail">
     
     
@@ -1208,25 +1298,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/05/29/maven-assembly打包/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/表情/23.gif)" alt="maven assembly打包" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/05/29/maven-assembly打包/" class="title">maven assembly打包</a></p>
-                            <p class="item-date"><time datetime="2017-05-29T14:40:54.000Z" itemprop="datePublished">2017-05-29</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1245,7 +1316,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -1254,7 +1325,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-session/">spring-session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-session/">spring-session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1263,7 +1334,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/spring-session/" style="font-size: 10px;">spring-session</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a>
+            <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/spring-session/" style="font-size: 10px;">spring-session</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a>
         </div>
     </div>
 
