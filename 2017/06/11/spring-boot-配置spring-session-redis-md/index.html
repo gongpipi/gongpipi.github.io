@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Gongpipi&#39;s Blog">
 <meta property="og:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一">
 <meta property="og:image" content="https://gongpipi.github.io/img/风景/秘鲁.jpg">
-<meta property="og:updated_time" content="2017-06-24T12:47:08.686Z">
+<meta property="og:updated_time" content="2017-08-16T08:23:27.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-boot 配置spring-session-redis.md">
 <meta name="twitter:description" content="spring session 应用场景最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一">
@@ -184,7 +184,9 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。<br><a id="more"></a><br>另外还有一点，<strong>web端的sessionid 好像也是共享的</strong></p>
+            <h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。  </p>
+<a id="more"></a>
+<p>另外还有一点，<strong>web端的sessionid 好像也是共享的</strong></p>
 <h3 id="1-使用spring-session"><a href="#1-使用spring-session" class="headerlink" title="1. 使用spring session"></a>1. 使用spring session</h3><p>spring boot 使用 spring session 很简单，总共需要3步即可完成配置</p>
 <ol>
 <li>在pom文件之配置依赖，版本继承spring-parent即可</li>
@@ -215,7 +217,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj6er0szv000idwv15yzbqjsq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj6er3otp000inov13w4venbb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

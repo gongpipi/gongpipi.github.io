@@ -172,23 +172,10 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <h1 id="1-线程和进程的区别"><a href="#1-线程和进程的区别" class="headerlink" title="1. 线程和进程的区别"></a>1. 线程和进程的区别</h1><p>进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，<br>线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度<br><em>通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位</em>。</p>
-<h1 id="2-post和put的区别"><a href="#2-post和put的区别" class="headerlink" title="2. post和put的区别"></a>2. post和put的区别</h1><p>   连接  <a href="https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-26#section-4.3.4" target="_blank" rel="external">https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-26#section-4.3.4</a></p>
-<p>   The fundamental difference between the POST and PUT methods is<br>   highlighted by the different intent for the enclosed representation.<br>   The target resource in a POST request is intended to handle the<br>   enclosed representation according to the resource’s own semantics,<br>   whereas the enclosed representation in a PUT request is defined as<br>   replacing the state of the target resource.  Hence, the intent of PUT<br>   is idempotent and visible to intermediaries, even though the exact<br>   effect is only known by the origin server.</p>
-<p>   所以，post和put的区别在于，post和put语义不同，post如何处理post的请求的表达已经包含在post的请求里；而put请求被定义去改变目标资源的状态，对于中间人是可见的，只有最终的存储资源的服务器知道变化。<br>   另外，put主要用于推送资源到服务器。post用于提交数据到服务器，请求服务器处理（提交表单或者上传文件），如：像表单这样的这样的数据。对于一般的文件服务器，put方法向指定资源位置上传最新内容，</p>
-<h1 id="3-ioc和aop是什么，为什么要这么做"><a href="#3-ioc和aop是什么，为什么要这么做" class="headerlink" title="3. ioc和aop是什么，为什么要这么做"></a>3. ioc和aop是什么，为什么要这么做</h1><p>   ioc 控制反转，现在都一般叫依赖注入（<code>网友回答，所以依赖的对象不是自己new的,而是别人提供的,可以做到外部资源可切换</code>），为什么要控制反转，将代码进行解耦，代码解耦的解决思想则是设计模式。控制反转的体现有1.将全局属性配置到外部文件中，spring可依据配置运行不同的代码，而程序不用做任何改动。2.改变变量的初始化方式get,set，3.软件演化有更好的灵活性，能快速响应需求变化，维护代价更小。</p>
-<pre><code>aop是切面编程，动态可插拔，比较好的应用例子就是日志、拦截器。
-</code></pre><h1 id="4-同步和异步"><a href="#4-同步和异步" class="headerlink" title="4. 同步和异步"></a>4. 同步和异步</h1><p>很明显，同步调用会等待方法的返回，异步调用会瞬间返回，但是异步调用瞬间返回并不代表你的任务就完成了，他会在后台起个线程继续进行任务</p>
-<p>我的理解比如完成某个功能需要三步，这三步依次执行，每一步只能等前一步操作完成才能进行。网友解释<code>当前执行需要上一步的结果输出作为结果</code><br>异步与同步相对的，异步是不需要给下一步返回输出结果的，程序执行异步的时候可以继续执行下一步操作。  </p>
-<h1 id="5-并行和并发"><a href="#5-并行和并发" class="headerlink" title="5. 并行和并发"></a>5. 并行和并发</h1><p>并发和并行在外在表象来说，是差不多的。由图所示，并行则是两个任务同时进行，而并发呢，则是一会做一个任务一会又切换做另一个任务。所以单个cpu是不能做并行的，只能是并发。</p>
-<h1 id="6-c10k问题"><a href="#6-c10k问题" class="headerlink" title="6. c10k问题"></a>6. c10k问题</h1><h1 id="7-关于netty，netty是一个处理socket的框架，"><a href="#7-关于netty，netty是一个处理socket的框架，" class="headerlink" title="7. 关于netty，netty是一个处理socket的框架，"></a>7. 关于netty，netty是一个处理socket的框架，</h1><p>Netty是什么？</p>
-<ol>
-<li>本质：JBoss做的一个Jar包  </li>
-<li>目的：快速开发高性能、高可靠性的网络服务器和客户端程序  </li>
-<li>优点：提供异步的、事件驱动的网络应用程序框架和工具</li>
-</ol>
-
+            <p><h1 id="1-线程和进程的区别"><a href="#1-线程和进程的区别" class="headerlink" title="1. 线程和进程的区别"></a>1. 线程和进程的区别</h1><p>进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，<br>线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度<br><em>通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位</em>。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/08/16/面试总结/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -198,7 +185,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/08/16/面试总结/" data-id="cj6er0t06000qdwv1wthqre8j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/08/16/面试总结/" data-id="cj6er3otu000onov13cwf92im" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -301,6 +288,11 @@
 
                         
                         
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/spring-jpa/">spring-jpa</a>
+    </div>
+
                     </div>
                 
             </header>
@@ -308,8 +300,11 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            
+            <p><p>spring jpa 访问数据库配置例子官方链接<br><a href="https://spring.io/guides/gs/accessing-data-mysql/" target="_blank" rel="external">https://spring.io/guides/gs/accessing-data-mysql/</a></p>
+<h2 id="一、pom文件中加入jpa-和数据库连接包"><a href="#一、pom文件中加入jpa-和数据库连接包" class="headerlink" title="一、pom文件中加入jpa 和数据库连接包"></a>一、pom文件中加入jpa 和数据库连接包</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+            <p class="article-more-link">
+                <a href="/2017/08/16/spring-jpa-数据库连接及操作/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -319,7 +314,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/08/16/spring-jpa-数据库连接及操作/" data-id="cj6er0t04000odwv1t3xp4upg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/08/16/spring-jpa-数据库连接及操作/" data-id="cj6er3ots000mnov1yisvyo4w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -434,7 +429,7 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="1-restful的概念与理解"><a href="#1-restful的概念与理解" class="headerlink" title="1. restful的概念与理解"></a>1. restful的概念与理解</h2><p>restful全称为（Representational State Transfer）直译为“表述状态传输”，是一种api设计风格。我的理解，就是充分利用http的put/get/post/delete四个操作代表数据库的crud操作，将api服务以http的uri的形式提供出去。可作为webservice 的一种替代。<br></p>
+            <p><h2 id="1-restful的概念与理解"><a href="#1-restful的概念与理解" class="headerlink" title="1. restful的概念与理解"></a>1. restful的概念与理解</h2><p>restful全称为（Representational State Transfer）直译为“表述状态传输”，是一种api设计风格。我的理解，就是充分利用http的put/get/post/delete四个操作代表数据库的crud操作，将api服务以http的uri的形式提供出去。可作为webservice 的一种替代。</p></p>
             <p class="article-more-link">
                 <a href="/2017/08/16/restful-api-理解/#more">查看更多</a>
             </p>
@@ -447,7 +442,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/08/16/restful-api-理解/" data-id="cj6er0szt000edwv1bvb5yvle" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/08/16/restful-api-理解/" data-id="cj6er3oto000gnov1gqy2fib8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -562,45 +557,13 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <p>一、关于cookie和session</p>
+            <p><p>一、关于cookie和session</p>
 <ol>
-<li>cookie 存在于浏览器端，是浏览器第一次向服务器发送请求时，由于服务器发现请求中没有带cookie参数，所以会在response的header部分添加一个set-cookie参数，浏览器根据header写入到文件中，以后每次请求都把cookie带上发送给服务器。服务器依据cookie得到服务器端保存的客户端信息。<br>cookie的成分有    </li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Set-Cookie属性</th>
-<th>描述及实例  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name=value</td>
-<td>必须，如：Set-Cookie: foo=bar  </td>
-</tr>
-<tr>
-<td>Expires</td>
-<td>可选值，默认是浏览器关闭失效。过期时间，如 Set-Cookie: foo=bar; Expires=Wednesday, 09-Nov-99 23:12:40GMT</td>
-</tr>
-<tr>
-<td>Domain</td>
-<td>可选，指定该cookie发送的域名。如果不指定则默认是产生Set-Cookie的响应服务器。例子,  Set-Cookie: foo=bar; domain=”sample.com” </td>
-</tr>
-<tr>
-<td>Path</td>
-<td>可选值，如果当前请求的url和cookie设置的path属性相同，则发送url时附带上cookie,”/“匹配所有的path. 例子,Set-Cookie: foo=bar; path=”/orders”</td>
-</tr>
-<tr>
-<td>Secure</td>
-<td>可选。只有是安全连接的时候，请求才会附带cookie,例子，Set-Cookie: foo=bar; secure  </td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>Session 是服务器端保存客户端信息的存储。因为http是无状态的，用户的每次请求都是无关联的。所以session 的出现使得服务器能够记录用户的信息。同样浏览器第一次请求服务器时服务器端会产生一个session，并将sessionid返回给浏览器存储到cookie里面，这样每次浏览器请求附带cookie,服务器通过sessionid 找到session 就可以得到当前请用的用户的信息。所以利用session可以实现权限的限制功能。</li>
-</ol>
-
+<li>cookie 存在于浏览器端，是浏览器第一次向服务器发送请求时，由于服务器发现请求中没有带cookie参数，所以会在response的header部分添加一个set-cookie参数，浏览器根据header写入到文件中，以后每次请求都把cookie带上发送给服务器。服务器依据cookie得到服务器端保存的客户端信息。  </li>
+</ol></p>
+            <p class="article-more-link">
+                <a href="/2017/08/16/cookie-和-session/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -610,7 +573,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/08/16/cookie-和-session/" data-id="cj6er0syx0000dwv1yqda7szp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/08/16/cookie-和-session/" data-id="cj6er3oss0000nov116uwgvee" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -738,7 +701,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/" data-id="cj6er0szy000ldwv19nq9dtod" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/" data-id="cj6er3otx000qnov1r8iesrsp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -867,7 +830,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/23/hexo-指令/" data-id="cj6er0szh0005dwv16riitrv7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/23/hexo-指令/" data-id="cj6er3otf0009nov13mylm2ig" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1001,7 +964,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/23/redis-操作/" data-id="cj6er0szq000cdwv1f2jptxl2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/23/redis-操作/" data-id="cj6er3otk000dnov1r8fjt7tg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1126,7 +1089,7 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。<br></p>
+            <p><h2 id="spring-session-应用场景"><a href="#spring-session-应用场景" class="headerlink" title="spring session 应用场景"></a>spring session 应用场景</h2><p>最近的项目中，因为有两个web项目，为了两个项目之间的session信息需要一致,并且实现单点登录，所以就用到了spring-sesssion。spring session 把session 信息放到了redis中，所以使用spring session 之前需要先安装redis.<br>session存储到redis后，和平时一样，每个浏览器第一次请求的时候就会生成一个session，在各个服务之间共享。  </p></p>
             <p class="article-more-link">
                 <a href="/2017/06/11/spring-boot-配置spring-session-redis-md/#more">查看更多</a>
             </p>
@@ -1139,7 +1102,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj6er0szv000idwv15yzbqjsq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj6er3otp000inov13w4venbb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1274,7 +1237,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/30/docker-基本操作指令/" data-id="cj6er0szj0007dwv1hx3llikl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/30/docker-基本操作指令/" data-id="cj6er3ot80005nov1r59dp6ek" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1403,7 +1366,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/29/maven-assembly打包/" data-id="cj6er0szu000gdwv1ocwyaexr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/29/maven-assembly打包/" data-id="cj6er3otm000enov18d50eu9k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

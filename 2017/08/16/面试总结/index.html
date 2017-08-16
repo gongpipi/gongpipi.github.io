@@ -5,17 +5,17 @@
     
     <title>面试总结 | Gongpipi&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="1. 线程和进程的区别进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位。 2. post和put的区别   连接  https://tools.ietf.org/html/draft-ietf-h">
+    <meta name="description" content="1. 线程和进程的区别进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位。">
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试总结">
 <meta property="og:url" content="https://gongpipi.github.io/2017/08/16/面试总结/index.html">
 <meta property="og:site_name" content="Gongpipi&#39;s Blog">
-<meta property="og:description" content="1. 线程和进程的区别进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位。 2. post和put的区别   连接  https://tools.ietf.org/html/draft-ietf-h">
-<meta property="og:updated_time" content="2017-08-16T08:13:32.257Z">
+<meta property="og:description" content="1. 线程和进程的区别进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位。">
+<meta property="og:updated_time" content="2017-08-16T08:23:45.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
-<meta name="twitter:description" content="1. 线程和进程的区别进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位。 2. post和put的区别   连接  https://tools.ietf.org/html/draft-ietf-h">
+<meta name="twitter:description" content="1. 线程和进程的区别进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位。">
     
 
     
@@ -175,6 +175,7 @@
         
             
             <h1 id="1-线程和进程的区别"><a href="#1-线程和进程的区别" class="headerlink" title="1. 线程和进程的区别"></a>1. 线程和进程的区别</h1><p>进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，<br>线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度<br><em>通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位</em>。</p>
+<a id="more"></a>
 <h1 id="2-post和put的区别"><a href="#2-post和put的区别" class="headerlink" title="2. post和put的区别"></a>2. post和put的区别</h1><p>   连接  <a href="https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-26#section-4.3.4" target="_blank" rel="external">https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-26#section-4.3.4</a></p>
 <p>   The fundamental difference between the POST and PUT methods is<br>   highlighted by the different intent for the enclosed representation.<br>   The target resource in a POST request is intended to handle the<br>   enclosed representation according to the resource’s own semantics,<br>   whereas the enclosed representation in a PUT request is defined as<br>   replacing the state of the target resource.  Hence, the intent of PUT<br>   is idempotent and visible to intermediaries, even though the exact<br>   effect is only known by the origin server.</p>
 <p>   所以，post和put的区别在于，post和put语义不同，post如何处理post的请求的表达已经包含在post的请求里；而put请求被定义去改变目标资源的状态，对于中间人是可见的，只有最终的存储资源的服务器知道变化。<br>   另外，put主要用于推送资源到服务器。post用于提交数据到服务器，请求服务器处理（提交表单或者上传文件），如：像表单这样的这样的数据。对于一般的文件服务器，put方法向指定资源位置上传最新内容，</p>
@@ -199,7 +200,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/08/16/面试总结/" data-id="cj6er0t06000qdwv1wthqre8j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/08/16/面试总结/" data-id="cj6er3otu000onov13cwf92im" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
