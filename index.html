@@ -133,7 +133,561 @@
 
         <div class="outer">
             
+            
             <section id="main">
+    <article id="post-面试总结" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/16/面试总结/">面试总结</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/16/面试总结/">
+            <time datetime="2017-08-16T08:13:05.000Z" itemprop="datePublished">2017-08-16</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/面试/">面试</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="1-线程和进程的区别"><a href="#1-线程和进程的区别" class="headerlink" title="1. 线程和进程的区别"></a>1. 线程和进程的区别</h1><p>进程：进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是操作系统分配资源的基本单位，<br>线程：是进程执行的基本单位，线程又叫轻进程，共享进程的资源，由操作系统调度<br><em>通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位</em>。</p>
+<h1 id="2-post和put的区别"><a href="#2-post和put的区别" class="headerlink" title="2. post和put的区别"></a>2. post和put的区别</h1><p>   连接  <a href="https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-26#section-4.3.4" target="_blank" rel="external">https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-26#section-4.3.4</a></p>
+<p>   The fundamental difference between the POST and PUT methods is<br>   highlighted by the different intent for the enclosed representation.<br>   The target resource in a POST request is intended to handle the<br>   enclosed representation according to the resource’s own semantics,<br>   whereas the enclosed representation in a PUT request is defined as<br>   replacing the state of the target resource.  Hence, the intent of PUT<br>   is idempotent and visible to intermediaries, even though the exact<br>   effect is only known by the origin server.</p>
+<p>   所以，post和put的区别在于，post和put语义不同，post如何处理post的请求的表达已经包含在post的请求里；而put请求被定义去改变目标资源的状态，对于中间人是可见的，只有最终的存储资源的服务器知道变化。<br>   另外，put主要用于推送资源到服务器。post用于提交数据到服务器，请求服务器处理（提交表单或者上传文件），如：像表单这样的这样的数据。对于一般的文件服务器，put方法向指定资源位置上传最新内容，</p>
+<h1 id="3-ioc和aop是什么，为什么要这么做"><a href="#3-ioc和aop是什么，为什么要这么做" class="headerlink" title="3. ioc和aop是什么，为什么要这么做"></a>3. ioc和aop是什么，为什么要这么做</h1><p>   ioc 控制反转，现在都一般叫依赖注入（<code>网友回答，所以依赖的对象不是自己new的,而是别人提供的,可以做到外部资源可切换</code>），为什么要控制反转，将代码进行解耦，代码解耦的解决思想则是设计模式。控制反转的体现有1.将全局属性配置到外部文件中，spring可依据配置运行不同的代码，而程序不用做任何改动。2.改变变量的初始化方式get,set，3.软件演化有更好的灵活性，能快速响应需求变化，维护代价更小。</p>
+<pre><code>aop是切面编程，动态可插拔，比较好的应用例子就是日志、拦截器。
+</code></pre><h1 id="4-同步和异步"><a href="#4-同步和异步" class="headerlink" title="4. 同步和异步"></a>4. 同步和异步</h1><p>很明显，同步调用会等待方法的返回，异步调用会瞬间返回，但是异步调用瞬间返回并不代表你的任务就完成了，他会在后台起个线程继续进行任务</p>
+<p>我的理解比如完成某个功能需要三步，这三步依次执行，每一步只能等前一步操作完成才能进行。网友解释<code>当前执行需要上一步的结果输出作为结果</code><br>异步与同步相对的，异步是不需要给下一步返回输出结果的，程序执行异步的时候可以继续执行下一步操作。  </p>
+<h1 id="5-并行和并发"><a href="#5-并行和并发" class="headerlink" title="5. 并行和并发"></a>5. 并行和并发</h1><p>并发和并行在外在表象来说，是差不多的。由图所示，并行则是两个任务同时进行，而并发呢，则是一会做一个任务一会又切换做另一个任务。所以单个cpu是不能做并行的，只能是并发。</p>
+<h1 id="6-c10k问题"><a href="#6-c10k问题" class="headerlink" title="6. c10k问题"></a>6. c10k问题</h1><h1 id="7-关于netty，netty是一个处理socket的框架，"><a href="#7-关于netty，netty是一个处理socket的框架，" class="headerlink" title="7. 关于netty，netty是一个处理socket的框架，"></a>7. 关于netty，netty是一个处理socket的框架，</h1><p>Netty是什么？</p>
+<ol>
+<li>本质：JBoss做的一个Jar包  </li>
+<li>目的：快速开发高性能、高可靠性的网络服务器和客户端程序  </li>
+<li>优点：提供异步的、事件驱动的网络应用程序框架和工具</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://gongpipi.github.io/2017/08/16/面试总结/" data-id="cj6eqsitd000nggv1805btn5b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://gongpipi.github.io/2017/08/16/面试总结/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/08/16/面试总结/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-spring-jpa-数据库连接及操作" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/16/spring-jpa-数据库连接及操作/">spring jpa 数据库连接及操作</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/16/spring-jpa-数据库连接及操作/">
+            <time datetime="2017-08-16T08:11:36.000Z" itemprop="datePublished">2017-08-16</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://gongpipi.github.io/2017/08/16/spring-jpa-数据库连接及操作/" data-id="cj6eqsita000iggv1sarzxe8p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://gongpipi.github.io/2017/08/16/spring-jpa-数据库连接及操作/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/08/16/spring-jpa-数据库连接及操作/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-restful-api-理解" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/16/restful-api-理解/">restful api 理解</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/16/restful-api-理解/">
+            <time datetime="2017-08-16T08:09:44.000Z" itemprop="datePublished">2017-08-16</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/restful-api/">restful-api</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="1-restful的概念与理解"><a href="#1-restful的概念与理解" class="headerlink" title="1. restful的概念与理解"></a>1. restful的概念与理解</h2><p>restful全称为（Representational State Transfer）直译为“表述状态传输”，是一种api设计风格。我的理解，就是充分利用http的put/get/post/delete四个操作代表数据库的crud操作，将api服务以http的uri的形式提供出去。可作为webservice 的一种替代。<br></p>
+            <p class="article-more-link">
+                <a href="/2017/08/16/restful-api-理解/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://gongpipi.github.io/2017/08/16/restful-api-理解/" data-id="cj6eqsit7000dggv1yqgsuxv8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://gongpipi.github.io/2017/08/16/restful-api-理解/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/08/16/restful-api-理解/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-cookie-和-session" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/16/cookie-和-session/">cookie 和 session</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/16/cookie-和-session/">
+            <time datetime="2017-08-16T08:07:16.000Z" itemprop="datePublished">2017-08-16</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/cookie/">cookie</a>, <a class="tag-link" href="/tags/session/">session</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>一、关于cookie和session</p>
+<ol>
+<li>cookie 存在于浏览器端，是浏览器第一次向服务器发送请求时，由于服务器发现请求中没有带cookie参数，所以会在response的header部分添加一个set-cookie参数，浏览器根据header写入到文件中，以后每次请求都把cookie带上发送给服务器。服务器依据cookie得到服务器端保存的客户端信息。<br>cookie的成分有    </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Set-Cookie属性</th>
+<th>描述及实例  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name=value</td>
+<td>必须，如：Set-Cookie: foo=bar  </td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>可选值，默认是浏览器关闭失效。过期时间，如 Set-Cookie: foo=bar; Expires=Wednesday, 09-Nov-99 23:12:40GMT</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>可选，指定该cookie发送的域名。如果不指定则默认是产生Set-Cookie的响应服务器。例子,  Set-Cookie: foo=bar; domain=”sample.com” </td>
+</tr>
+<tr>
+<td>Path</td>
+<td>可选值，如果当前请求的url和cookie设置的path属性相同，则发送url时附带上cookie,”/“匹配所有的path. 例子,Set-Cookie: foo=bar; path=”/orders”</td>
+</tr>
+<tr>
+<td>Secure</td>
+<td>可选。只有是安全连接的时候，请求才会附带cookie,例子，Set-Cookie: foo=bar; secure  </td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Session 是服务器端保存客户端信息的存储。因为http是无状态的，用户的每次请求都是无关联的。所以session 的出现使得服务器能够记录用户的信息。同样浏览器第一次请求服务器时服务器端会产生一个session，并将sessionid返回给浏览器存储到cookie里面，这样每次浏览器请求附带cookie,服务器通过sessionid 找到session 就可以得到当前请用的用户的信息。所以利用session可以实现权限的限制功能。</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://gongpipi.github.io/2017/08/16/cookie-和-session/" data-id="cj6eqsisf0000ggv138t0kl4c" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://gongpipi.github.io/2017/08/16/cookie-和-session/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/08/16/cookie-和-session/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-windows-部署mysql-5-7-12" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -184,7 +738,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/" data-id="cj54svdaj000fusv1rutyz3ss" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/07/15/windows-部署mysql-5-7-12/" data-id="cj6eqsitc000lggv19oyo1628" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -313,7 +867,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/23/hexo-指令/" data-id="cj54svd9p0002usv11kmwwz74" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/23/hexo-指令/" data-id="cj6eqsisw0006ggv176shl921" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -447,7 +1001,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/23/redis-操作/" data-id="cj54svdae000ausv1kbp9tmzo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/23/redis-操作/" data-id="cj6eqsit20009ggv1a0wlbxyn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -585,7 +1139,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj54svdal000husv1n42qz5ie" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/06/11/spring-boot-配置spring-session-redis-md/" data-id="cj6eqsit8000fggv1ygew2mlv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -720,7 +1274,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/30/docker-基本操作指令/" data-id="cj54svd9i0000usv1940irzob" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/30/docker-基本操作指令/" data-id="cj6eqsisv0005ggv1s7r9q37h" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -849,7 +1403,7 @@
 
 </div>
 
-    <a data-url="https://gongpipi.github.io/2017/05/29/maven-assembly打包/" data-id="cj54svdah000eusv1aowzswy2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://gongpipi.github.io/2017/05/29/maven-assembly打包/" data-id="cj6eqsit6000bggv165o320mv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -927,436 +1481,13 @@
 
 
 
-    <article id="post-markdown 语法熟悉" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/05/markdown 语法熟悉/">markdown 语法熟悉</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/05/markdown 语法熟悉/">
-            <time datetime="2017-05-05T13:16:39.000Z" itemprop="datePublished">2017-05-05</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/hexo/">hexo</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/hexo/">hexo</a>, <a class="tag-link" href="/tags/markdown/">markdown</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h1 id="一-书写工具"><a href="#一-书写工具" class="headerlink" title="一.书写工具"></a>一.书写工具</h1><p>我使用的是有道云笔记的编辑工具，可以边写变看效果。蛮好用的。可以在有道云笔记官网<a href="http://download.ydstatic.com/notewebsite/downloads/YNote.exe" target="_blank" rel="external">下载</a></p>
-<h1 id="二-markdown语法"><a href="#二-markdown语法" class="headerlink" title="二.markdown语法"></a>二.markdown语法</h1><h2 id="1-标题-h"><a href="#1-标题-h" class="headerlink" title="1.标题(h)"></a>1.标题(h)</h2><p>在行首添加1-6个#号，对应标题的1到6阶，如：</p>
-<blockquote>
-<p>#.  这是 </p>
-<p>##.  这是 </p>
-<p>######.  这是 </p>
-</blockquote>
-<p>同时数字越大，标题字越小，<br></p>
-            <p class="article-more-link">
-                <a href="/2017/05/05/markdown 语法熟悉/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://gongpipi.github.io/2017/05/05/markdown 语法熟悉/" data-id="cj54svda50005usv1gz0x4mc4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://gongpipi.github.io/2017/05/05/markdown 语法熟悉/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/05/05/markdown 语法熟悉/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/05/hello-world/">Hello World</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/05/hello-world/">
-            <time datetime="2017-05-05T13:00:08.532Z" itemprop="datePublished">2017-05-05</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-            <p class="article-more-link">
-                <a href="/2017/05/05/hello-world/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://gongpipi.github.io/2017/05/05/hello-world/" data-id="cj54svda90007usv1d7ozojtf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://gongpipi.github.io/2017/05/05/hello-world/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://gongpipi.github.io/2017/05/05/hello-world/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
+    <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    </nav>
 </section>
             
-                
-<aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">最新文章</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/15/windows-部署mysql-5-7-12/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/文艺/learnhard.jpg)" alt="windows 部署mysql 5.7.12" class="thumbnail-image"></span>
-    
-</a>
 
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/15/windows-部署mysql-5-7-12/" class="title">windows 部署mysql 5.7.12</a></p>
-                            <p class="item-date"><time datetime="2017-07-15T04:12:33.000Z" itemprop="datePublished">2017-07-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/23/hexo-指令/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/风景/hexo.png)" alt="hexo 指令" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/23/hexo-指令/" class="title">hexo 指令</a></p>
-                            <p class="item-date"><time datetime="2017-06-23T13:42:50.000Z" itemprop="datePublished">2017-06-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/23/redis-操作/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/程序员表情/打死不改bug.jpg)" alt="redis 操作" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/23/redis-操作/" class="title">redis 操作</a></p>
-                            <p class="item-date"><time datetime="2017-06-23T13:41:52.000Z" itemprop="datePublished">2017-06-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/风景/秘鲁.jpg)" alt="spring-boot 配置spring-session-redis.md" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/11/spring-boot-配置spring-session-redis-md/" class="title">spring-boot 配置spring-session-redis.md</a></p>
-                            <p class="item-date"><time datetime="2017-06-11T13:52:09.000Z" itemprop="datePublished">2017-06-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/05/30/docker-基本操作指令/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/程序员表情/老子再也不写代码了.gif)" alt="docker 基本操作指令" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/05/30/docker-基本操作指令/" class="title">docker 基本操作指令</a></p>
-                            <p class="item-date"><time datetime="2017-05-30T09:00:21.000Z" itemprop="datePublished">2017-05-30</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">分类</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">归档</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">标签</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-session/">spring-session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">标签云</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/spring-session/" style="font-size: 10px;">spring-session</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">链接</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
+            
 
             
         </div>
@@ -1377,7 +1508,7 @@
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'pipi' + '.disqus.com/count.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();

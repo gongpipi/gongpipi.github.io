@@ -185,16 +185,13 @@ code {
   #main {
     display: inline;
     float: left;
-    width: 68%;
+    width: 98%;
     margin: 0 1%;
   }
 }
 @media screen and (min-width: 800px) and (max-width: 1199px) {
   #main {
-    display: inline;
-    float: left;
-    width: 57.99999999999999%;
-    margin: 0 1%;
+    width: 100%;
   }
 }
 @media screen and (min-width: 560px) and (max-width: 799px) {
@@ -204,6 +201,29 @@ code {
 }
 @media screen and (max-width: 559px) {
   #main {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #custom-main {
+    display: inline;
+    float: left;
+    width: 68%;
+    margin: 0 1%;
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1199px) {
+  #custom-main {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 560px) and (max-width: 799px) {
+  #custom-main {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 559px) {
+  #custom-main {
     width: 100%;
   }
 }
